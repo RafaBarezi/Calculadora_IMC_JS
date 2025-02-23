@@ -1,163 +1,143 @@
 :root {
-    --color-primary: #574bfd;
-    --color-secondary: #FFF9EB;
-    --color-tertiary: #C4C4C4;
-    --color-button: #574bfd;
-    --color-button-hover: #e55720;
-    --color-text: #444444;
-    --color-white: #FFFFFF;
+  --color-primary: #0ff19b;
+  --color-secondary: #fff9eb;
+  --color-tertiary: #c4c4c4;
+  --color-button: #0ff19b;
+  --color-button-hover: #e55720;
+  --color-text: #444444;
+  --color-white: #ffffff;
 }
 
-/* Estilos gerais */
+/* Reseta margem, padding e define border-radius padrão */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border-radius: 8px;
 }
 
+/* Estilização do body com centralização e fundo */
 body {
-    height: 100vh;
-    background-color: var(--color-primary);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  min-height: 100vh;
+  background-color: var(--color-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Merriweather", serif;
+  color: var(--color-text);
+  padding: 20px;
 }
 
+/* Container principal */
 .main-content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
+  background-color: var(--color-secondary);
+  width: 100%;
+  max-width: 600px;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 }
 
-/* Banner */
+/* Header/banner */
 .header-banner {
-    flex: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 0 0;
+  background-color: var(--color-primary);
+  text-align: center;
+  padding: 40px 20px;
 }
 
-/* Seção de entrada */
-.input-section {
-    flex: 60%;
-    background-color: var(--color-secondary);
-    border: 1px solid #000;
-    border-radius: 64px 64px 0 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    width: 100%;
-}
-
-/* Títulos */
 .main-title {
-    font-size: 48px;
-    font-family: "Merriweather", serif;
-    font-weight: 900;
-    font-style: italic;
-    color: var(--color-white);
+  font-size: 2.5rem;
+  font-weight: 1000;
+  font-style: italic;
+  color: var(--color-white);
+  margin-bottom: 20px;
 }
 
-.section-title {
-    font-family: "Merriweather", serif;
-    font-size: 30px;
-    font-weight: 700;
-    color: var(--color-primary);
-    margin: 10px 0;
-    text-align: center;
+.header-banner img {
+  max-width: 100%;
+  height: auto;
 }
 
-/* Contêineres de entrada e botão */
-.input-wrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    max-width: 600px;
-    margin-top: 20px;
+/* Seção de entrada e cálculo */
+section {
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.input-name {
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #000;
-    border-radius: 25px 0 0 25px;
-    font-size: 16px;
+/* Estilização dos campos de input */
+input[type="number"],
+input[type="text"],
+select {
+  width: 100%;
+  max-width: 300px;
+  padding: 15px;
+  margin: 10px 0;
+  font-size: 1.25rem;
+  text-align: center;
+  border: 2px solid var(--color-primary);
+  background-color: var(--color-white);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-.button-container {
-    width: 300px;
-    justify-content: center;
+/* Input para resultado adicional desabilitado */
+input[readonly] {
+  background-color: var(--color-tertiary);
+  color: var(--color-text);
 }
 
-/* Estilos de entrada de texto */
-.input-title {
-    flex: 1;
-    padding: 10px 15px;
-    font-size: 16px;
-    border: 2px solid #333;
-    border-right: none;
-    border-radius: 25px 0 0 25px;
-    font-family: "Merriweather", serif;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-/* Estilos de botão */
+/* Estilização do botão */
 button {
-    padding: 15px 30px;
-    font-family: "Merriweather", sans-serif;
-    font-size: 16px;
-    border: 2px solid #000;
-    border-radius: 25px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
+  padding: 15px 25px;
+  margin-top: 10px;
+  font-size: 1.25rem;
+  font-family: "Merriweather", sans-serif;
+  color: var(--color-white);
+  background-color: var(--color-button);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-.button-add {
-    background-color: var(--color-tertiary);
-    color: Blue(--color-text);
-    border-radius: 0 25px 25px 0;
+button:disabled {
+  background-color: var(--color-tertiary);
+  cursor: not-allowed;
 }
 
-.button-add:hover {
-    background-color: #a1a1a1;
+button:hover:not(:disabled) {
+  background-color: var(--color-button-hover);
 }
 
-/* Listas */
-ul {
-    list-style-type: none;
-    color: var(--color-text);
-    font-family: "Inter", sans-serif;
-    font-size: 18px;
-    text-align: center;
-    margin: 20px 0;
+/* Estilo para exibição do resultado via parágrafo */
+#resultado {
+  font-size: 1.5rem;
+  margin-top: 20px;
+  color: var(--color-text);
+  text-align: center;
 }
 
-.result-list {
-    margin-top: 15px;
-    color: #df0505;
-    font-size: 30px;
-    font-weight: bold;
-    text-align: center;
-}
+/* Responsividade */
+@media (max-width: 480px) {
+  .main-title {
+    font-size: 2rem;
+  }
 
-/* Botão de sortear amigo */
-.button-draw {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 10px 40px;
-    color: var(--color-white);
-    background-color: var(--color-button);
-    font-size: 25px;
-}
+  input[type="number"],
+  input[type="text"],
+  select {
+    max-width: 90%;
+    font-size: 1rem;
+    padding: 12px;
+  }
 
-.button-draw img {
-    margin-right: 40px;
-}
+  button {
+    font-size: 1rem;
+    padding: 12px 20px;
+  }
 
-.button-draw:hover {
-    background-color: Blue(--color-button-hover);
+  #resultado {
+    font-size: 1.25rem;
+  }
 }

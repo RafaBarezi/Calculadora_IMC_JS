@@ -10,37 +10,39 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700;900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
         rel="stylesheet">
-    <title> Sorteio </title>
+    <title>Cálculo de IMC</title>
 </head>
 
 <body>
     <main class="main-content">
         <header class="header-banner">
-            <h1 class="main-title">Vamos fazer um sorteio?</h1>
-            <img src="assets/shih tzu sorteando nome.png" alt="Shih Tzu sorteando um nome" width="200">
-
+            <h1 class="main-title">Vamos calcular seu IMC?</h1>
+            <img src="assets/cachorro_balanca.png" alt="cachorro em coma de balança" width="250">
         </header>
+        <section>
 
-        <section class="input-section">
-        
-            <div class="input-wrapper">
-                <input type="text" id="amigo" class="input-name" placeholder="Escreva o nome de quem vai participar">
-                <button class="button-add" onclick="adicionarAmigo()">Adicionar</button>
-            </div>
+            <label for="peso"> Digite seu peso:</label>
+            <input type="number" id="peso" placeholder="">
+            <label for="altura">informe a altura:</label>
+            <input id="altura" type="text" step="0.001" lang="en" placeholder="">
+            <script>
+                const alturaInput = document.getElementById("altura");
 
-            <ul id="amigos" class="name-list" aria-labelledby="amigos" role="list"></ul>
-            <ul id="resultado" class="result-list" aria-live="polite"></ul>
+                alturaInput.addEventListener("input", function () {
+                    // Remove tudo que não for dígito
+                    let digits = this.value.replace(/\D/g, "");
 
-            <div class="button-container">
-                <button class="button-draw" onclick="sortearAmigo()" aria-label="Sortear ">
-                    <img src="assets/play_circle_outline.png" alt="Ícone para sortear">
-                    Clique para sortear
-                </button>
-            </div>
+                    // Se tiver exatamente 3 dígitos e ainda não houver ponto, insere o ponto
+                    if (digits.length === 3 && !this.value.includes('.')) {
+                        this.value = digits.slice(0, 1) + '.' + digits.slice(1);
+                    }
+                });
+            </script>
+            <button id="calcular" onclick="calcular()" disabled>Saber o resutado</button>
+            <p id="resultado"></p>
         </section>
     </main>
-
-    <script src="app.js" defer></script>
+    <script src="app.js"></script>
 </body>
 
 </html>

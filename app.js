@@ -1,63 +1,38 @@
-// Inicie declarando uma variável do tipo array, que armazenará os nomes dos amigos inseridos. 
-let amigos = [];
+// Função para verificar se todos os campos estão preenchidos
+function verificarCampos() {
+    const num1 = document.getElementById("peso").value;
+    const num2 = document.getElementById("altura").value;
+    const botaoCalcular = document.getElementById("calcular");
 
-//Desenvolva uma função que permita ao usuário inserir um nome no campo de texto e adicioná-lo à lista de amigos criada anteriormente:
-function adicionarAmigo() {
-    //Capturar o valor do campo de entrada: Utilize document.getElementById ou document.querySelector para obter o texto inserido pelo usuário:
-    let input = document.getElementById("amigo");
-    let nome = input.value;
-
-    //Validar a entrada: Implemente uma validação para garantir que o campo não esteja vazio:
-    if (nome === "") {
-        alert("Por favor, insira um nome.");
-        return;
-    }
-
-    const regex = /^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/;
-    if (!regex.test(nome)) {
-        alert("O nome não deve conter números ou caracteres especiais.");
-        return;
-    }
-
-    if (amigos.includes(nome)) {
-        alert("Este nome já foi incluído na sua lista.");
-        return;
-    }
-
-    // Atualizar o array de amigos: Se o valor for válido, adicione-o ao array que armazena os nomes dos amigos usando o método .push():
-    amigos.push(nome);
-
-    atualizarLista();
-
-    //Limpar o campo de entrada: Após adicionar o nome, redefina o campo de texto para uma string vazia.
-    input.value = "";
+    // Habilita o botão apenas se ambos os campos estiverem preenchidos
+    botaoCalcular.disabled = !(num1.trim() !== "" && num2.trim() !== "");
 }
 
-function atualizarLista() {
-    const ul = document.getElementById("amigos");
-    ul.innerHTML = "";
+// Função para calcular o IMC
+function calcularIMC() {
+    const peso = parseFloat(document.getElementById("peso").value);
+    const altura = parseFloat(document.getElementById("altura").value);
 
-    amigos.forEach((nome) => {
-        const li = document.createElement("li");
-        li.textContent = nome;
-        ul.appendChild(li);
-    });
-}
-
-function sortearAmigo() {
-
-    //Validar que há amigos disponíveis: Antes de sortear, verificar se o array amigos não está vazio:
-    if (amigos.length <= 1) {
-        alert("Adicione pelo menos um nome antes de sortear.");
+    if (isNaN(peso) || isNaN(altura) || altura <= 0) {
+        alert("Digite valores válidos para peso e altura.");
         return;
     }
 
-    // Gerar um índice aleatório: Usar Math.random() e Math.floor() para selecionar um índice aleatório do array.
-    const indice = Math.floor(Math.random() * amigos.length);
-    console.log("Índice sorteado:", indice);
-    const sorteado = amigos[indice];
+    const imc = peso / (altura * altura);
+    let classificacao = (imc < 18.5) ? "você está abaixo do peso!\n\n Isso pode indicar desnutrição, deficiência de nutrientes ou doenças específicas. Procure um médico para investigar!" :
+        (imc < 25) ? "seu peso é normal!\n\n Este resultado é ideal para a maioria das pessoas. Se mantenha saudável com boms hábitos alimentares e faça exercícios" :
+            (imc < 30) ? "você está com sobrepeso! \n\n Isso pode ser um alerta para risco de diabetes, hipertensão e problemas cardiovasculares. Tenha uma dieta equilibrada e faça exercícios" :
+                (imc < 35) ? "você tem obesidade Grau I: \n Isso aumenta a chance de ter doenças como diabetes e colesterol alto. Procure seu médico!" :
+                    (imc < 40) ? "você tem  Grau II: \n Isso indica alto risco de problemas cardíacos e apneia do sono. Procure seu médico!" :
+                        "você tem obesidade Grau III: \n Existe um risco muito alto de doenças cardíacas e AVC . Procure seu médico!";
 
-    // Mostrar o resultado: Atualizar o conteúdo do elemento de resultado usando document.getElementById()
-    const resultado = document.getElementById("resultado");
-    resultado.innerHTML = `<li> O amigo sorteado foi: <strong>${sorteado}</strong>!</li>`;
+    // Exibe o resultado no elemento HTML
+    document.getElementById("resultado").innerText = `Seu IMC é ${imc.toFixed(2).replace(".", ",")} ou seja, ${classificacao} `;
 }
+
+// Registra eventos após o carregamento do DOM
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("peso").addEventListener("input", verificarCampos);
+    document.getElementById("altura").addEventListener("input", verificarCampos);
+    document.getElementById("calcular").addEventListener("click", calcularIMC);
+});
