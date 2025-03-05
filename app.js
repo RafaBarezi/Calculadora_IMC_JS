@@ -20,7 +20,7 @@ function calcularIMC() {
 
     const imc = peso / (altura * altura);
     let classificacao = (imc < 18.5) ? "você está abaixo do peso!\n\n Isso pode indicar desnutrição, deficiência de nutrientes ou doenças específicas. Procure um médico para investigar!" :
-        (imc < 25) ? "seu peso é normal!\n\n Este resultado é ideal para a maioria das pessoas. Se mantenha saudável com boms hábitos alimentares e faça exercícios" :
+        (imc < 25) ? "seu peso é normal!\n\n Este resultado é ideal para a maioria das pessoas. Se mantenha saudável com bons hábitos alimentares e faça exercícios" :
             (imc < 30) ? "você está com sobrepeso! \n\n Isso pode ser um alerta para risco de diabetes, hipertensão e problemas cardiovasculares. Tenha uma dieta equilibrada e faça exercícios" :
                 (imc < 35) ? "você tem obesidade Grau I: \n Isso aumenta a chance de ter doenças como diabetes e colesterol alto. Procure seu médico!" :
                     (imc < 40) ? "você tem  Grau II: \n Isso indica alto risco de problemas cardíacos e apneia do sono. Procure seu médico!" :
