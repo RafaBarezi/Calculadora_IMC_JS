@@ -29,7 +29,7 @@
                 const alturaInput = document.getElementById("altura");
 
                 alturaInput.addEventListener("input", function () {
-                    // Remove tudo que não for dígito
+
                     let digits = this.value.replace(/\D/g, "");
 
                     // Se tiver exatamente 3 dígitos e ainda não houver ponto, insere o ponto
@@ -42,6 +42,9 @@
             <p id="resultado"></p>
         </section>
     </main>
+    <footer class="rodape">
+        <p>Desenvolvido por Rafaela Barezi</p>
+    </footer>
     <script src="app.js"></script>
 </body>
 

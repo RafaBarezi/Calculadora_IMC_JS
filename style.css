@@ -8,7 +8,6 @@
   --color-white: #ffffff;
 }
 
-/* Reseta margem, padding e define border-radius padrão */
 * {
   margin: 0;
   padding: 0;
@@ -16,19 +15,20 @@
   border-radius: 8px;
 }
 
-/* Estilização do body com centralização e fundo */
-body {
-  min-height: 100vh;
-  background-color: var(--color-primary);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "Merriweather", serif;
-  color: var(--color-text);
-  padding: 20px;
+body 
+
+{min-height: 100vh;
+background-color: var(--color-primary);
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+font-family: "Merriweather",
+serif;
+color: var(--color-text);
+padding: 20px;
 }
 
-/* Container principal */
 .main-content {
   background-color: var(--color-secondary);
   width: 100%;
@@ -38,7 +38,6 @@ body {
   overflow: hidden;
 }
 
-/* Header/banner */
 .header-banner {
   background-color: var(--color-primary);
   text-align: center;
@@ -58,7 +57,6 @@ body {
   height: auto;
 }
 
-/* Seção de entrada e cálculo */
 section {
   padding: 40px 20px;
   display: flex;
@@ -66,7 +64,6 @@ section {
   align-items: center;
 }
 
-/* Estilização dos campos de input */
 input[type="number"],
 input[type="text"],
 select {
@@ -81,13 +78,11 @@ select {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Input para resultado adicional desabilitado */
 input[readonly] {
   background-color: var(--color-tertiary);
   color: var(--color-text);
 }
 
-/* Estilização do botão */
 button {
   padding: 15px 25px;
   margin-top: 10px;
@@ -110,7 +105,6 @@ button:hover:not(:disabled) {
   background-color: var(--color-button-hover);
 }
 
-/* Estilo para exibição do resultado via parágrafo */
 #resultado {
   font-size: 1.5rem;
   margin-top: 20px;
@@ -118,7 +112,6 @@ button:hover:not(:disabled) {
   text-align: center;
 }
 
-/* Responsividade */
 @media (max-width: 480px) {
   .main-title {
     font-size: 2rem;
@@ -140,4 +133,17 @@ button:hover:not(:disabled) {
   #resultado {
     font-size: 1.25rem;
   }
+
+  .rodape {
+    text-align: center;
+    color: #ffffff;
+    padding: 20px 0;
+  }
+}
+
+footer.rodape {
+  text-align: center;
+  color: #000000;
+  padding: 20px 0;
+
 }
